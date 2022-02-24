@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<div style="margin-left:800px">
+    <form action="/Thongtincauthu/Search" method="post" style="display:flex">
+        <div style="margin-left:20px;margin-top:-10px">
+            <input type="search" placeholder="Tim Kiem" name="search" style="outline:none;border: 1px solid red" />
+        </div>
+        <div style="margin-left:10px;margin-top:-15px">
+            <button type="submit" class="btn btn-primary">Tìm Kiếm</button>
+        </div>
+    </form>
+</div>
+<p>
+    <button type="button" class="btn btn-success"><a href="https://localhost:44391/DanhMuc/Viewcreate">Tạo</a></button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên
+        </th>
+        <th>
+            Ngày Sinh
+        </th>
+        <th>
+            Quốc Tịch
+        </th>
+        <th>
+            Thân Hình
+        </th>
+        <th>
+            Lương
+        </th>
+        <th>
+            Giá Trị
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th>
+            Thao Tác
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Age
+            </td>
+            <td>
+                @item.Country
+            </td>
+            <td>
+                @item.inforcaothap
+            </td>
+            <td>
+                @item.Salary
+            </td>
+            <td>
+                @item.Value
+            </td>
+            <td>
+                <img src=" @item.Image" width="50px" height="50px" />
+            </td>
+            <td>
+            </td>
+        </tr>
+    }
+
+</table>

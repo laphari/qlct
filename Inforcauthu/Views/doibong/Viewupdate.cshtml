@@ -1,0 +1,31 @@
+﻿@model Inforcauthu.Models.doibong
+@{
+    ViewBag.Title = "Viewupdate";
+}
+
+<h2>Viewupdate</h2>
+<div style="margin-left:20%;background-color:sandybrown;width:50%">
+    <form action="/doibong/Update" method="post" enctype="multipart/form-data">
+        <label>Mã CLB</label>
+        <input type="text" class="form-control" name="ma" id="theloai" value="@Model.IDclub" readonly />
+        <label>Tên CLB</label>
+        <input type="text" class="form-control" name="tenclbb" id="theloai"  value="@Model.Nameclub"/>
+        <label>Năm Thành Lập</label>
+        <input type="text" class="form-control" name="namthanhlappp"  value="@Model.Namthanhlap" readonly />
+        <label>Chủ Tịch</label>
+        <input type="text" class="form-control" name="bosss"  value="@Model.Chutichclb" />
+        <label>Fan</label>
+        <input type="text" class="form-control" name="fanclbb"  value="@Model.fan" />
+        <label>Chi Tiết CLB</label>
+        <textarea class="form-control" name="chitietclbb1"  value="@Model.chitietclb"></textarea>
+        <label>Logo:</label>
+        <input type="file" class="form-control" name="logoclbb"  value="@Model.logo" />
+        <button type="submit" class="btn-danger" onclick="clickk()">Tạo</button>
+    </form>
+</div>
+<script src="~/Content/Ckeditor/ckeditor/ckeditor.js">
+
+</script>
+<script>
+    CKEDITOR.replace('chitietclbb1')
+</script>

@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Inforcauthu.Models.Thongtincauthu>
+@{
+    ViewBag.Title = "Index";
+    var totallpagesize = int.Parse(ViewData["totallpage"].ToString());
+}
+<div style="margin-left:800px">
+    <form action="/Thongtincauthu/Search" method="post" style="display:flex">
+        <div style="margin-left:20px;margin-top:-10px">
+            <input type="search" placeholder="Tim Kiem" name="search" style="outline:none;border: 1px solid red" />
+        </div>
+        <div style="margin-left:10px;margin-top:-15px">
+            <button type="submit" class="btn btn-primary">Tìm Kiếm</button>
+        </div>
+    </form>
+</div>
+<p>
+    <button type="button" class="btn btn-success"><a href="https://localhost:44370/Thongtincauthu/Viewcreate">Tạo</a></button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên
+        </th>
+        <th>
+            Ngày Sinh
+        </th>
+        <th>
+            Quốc Tịch
+        </th>
+        <th>
+            Thân Hình
+        </th>
+        <th>
+            Lương
+        </th>
+        <th>
+            Giá Trị
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th>
+            Thao Tác
+        </th>
+        <th>
+            CLB
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Age
+            </td>
+            <td>
+                @item.Country
+            </td>
+            <td>
+                @item.inforcaothap
+            </td>
+            <td>
+                @item.Salary
+            </td>
+            <td>
+                @item.Value
+            </td>
+            <td>
+                <img src=" @item.Image" width="80px" height="70px" />
+            </td>
+            <td>
+                <a href="/Thongtincauthu/Remove?idd=@item.ID" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-trash-alt"></i></a>
+                <a href="/Thongtincauthu/detail?id=@item.ID" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-info-circle"></i></a>
+                <a href="/Thongtincauthu/Viewupdate?id=@item.ID" class="btn btn-danger btn-sm" style="color:white"><i class="fa-solid fa-pen-to-square"></i></a>
+            </td>
+            <td>
+                @item.IDdoibongcauthu
+            </td>
+        </tr>
+    }
+
+</table>
+<ul class="pagination" style="margin-left:35%;margin-top:20px">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    @for (var i = 1; i <= totallpagesize; i++)
+    {
+        <li class="page-item"><a class="page-link" href="/Thongtincauthu/Index?page=@i">@i</a></li>
+    }
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul>
+
+@if (ViewBag.Thongdiep == true)
+{
+    <script>
+        window.addEventListener('load', (event) => {
+            Swal.fire(
+                'Bạn đã tạo thành công',
+                'bấm vào đây',
+                'success'
+            )
+        })
+    </script>
+}
+
+

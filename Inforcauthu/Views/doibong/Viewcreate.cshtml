@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Viewcreate";
+}
+
+<h2>Viewcreate</h2>
+
+<h2 style="margin-left:390px">Đăng Kí</h2>
+<div style="margin-left:20%;background-color:sandybrown;width:50%">
+    <form action="/doibong/Create" method="post" enctype="multipart/form-data">
+        <label>Tên CLB</label>
+        <input type="text" class="form-control" name="tenclb" id="theloai" />
+        <label>Năm Thành Lập</label>
+        <input type="text" class="form-control" name="namthanhlapp" />
+        <label>Chủ Tịch</label>
+        <input type="text" class="form-control" name="boss" />
+        <label>Fan</label>
+        <input type="text" class="form-control" name="fanclb" />
+        <label>Chi Tiết CLB</label>
+        <textarea class="form-control" name="chitietclbb"></textarea>
+        <label>Logo:</label>
+        <input type="file" class="form-control" name="logoclb" />
+        <button type="submit" class="btn-danger" onclick="clickk()">Tạo</button>
+    </form>
+</div>
+<script src="~/Content/Ckeditor/ckeditor/ckeditor.js">
+
+</script>
+<script>
+    CKEDITOR.replace('chitietclbb')
+</script>

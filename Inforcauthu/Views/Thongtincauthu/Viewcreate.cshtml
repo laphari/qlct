@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Inforcauthu.Models.doibong>
+@{
+    ViewBag.Title = "Viewcreate";
+}
+
+<h2 style="margin-left:390px">Đăng Kí</h2>
+<div style="margin-left:20%;background-color:sandybrown;width:50%">
+    <form action="/Thongtincauthu/Create" method="post" enctype="multipart/form-data">
+        <label>Tên:</label>
+        <input type="text" class="form-control" name="namect" id="theloai" />
+        <label>Tuổi:</label>
+        <input type="date" class="form-control" name="tuoict" />
+        <label>Đất Nước:</label>
+        <input type="text" class="form-control" name="datnuoc" />
+        <label>Thể Hình:</label>
+        <input type="text" class="form-control" name="thehinh" />
+        <label>Chi tiết cầu thủ:</label>
+        <textarea class="form-control" name="chitietcauthu"></textarea>
+        <label>Lương:</label>
+        <input type="text" class="form-control" name="luongct" />
+        <label>Giá Trị:</label>
+        <input type="text" class="form-control" name="giatrict" />
+        <label>Ảnh:</label>
+        <input type="file" class="form-control" name="anhct" />
+        <select name="iddoibong">
+            @foreach (var item in Model)
+            {
+                <option value="@item.IDclub">@item.Nameclub</option>
+            }
+        </select>
+        <button type="submit" class="btn-danger" onclick="clickk()">Tạo</button>
+    </form>
+</div>
+
+<script src="~/Content/Ckeditor/ckeditor/ckeditor.js">
+
+</script>
+<script>
+    CKEDITOR.replace('chitietcauthu')
+</script>
+
+@if (ViewBag.Thongdiep == true)
+{
+    <script>
+        window.addEventListener('load', (event) => {
+            Swal.fire(
+                'Bạn đã tạo thành công',
+                'bấm vào đây',
+                'success'
+            )
+        })
+    </script>
+}

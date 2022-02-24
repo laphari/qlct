@@ -1,0 +1,36 @@
+﻿@model Inforcauthu.Models.Thongtincauthu
+@{
+    ViewBag.Title = "Viewupdate";
+}
+
+<h2>Viewupdate</h2>
+<h2 style="margin-left:390px">Đăng Kí</h2>
+<div style="margin-left:20%;background-color:sandybrown;width:50%">
+    <form action="/Thongtincauthu/Update" method="post" enctype="multipart/form-data">
+        <label>ID Đội Bóng:</label>
+        <input type="text" class="form-control" name="iddb" value="@Model.ID" readonly/>
+        <label>Tên:</label>
+        <input type="text" class="form-control" name="namectt" id="theloai" value="@Model.Name" readonly />
+        <label>Tuổi:</label>
+        <input type="date" class="form-control" name="tuoictt" value="@Model.Age"/>
+        <label>Đất Nước:</label>
+        <input type="text" class="form-control" name="datnuocc" value="@Model.Country" readonly />
+        <label>Thể Hình:</label>
+        <input type="text" class="form-control" name="thehinhh" value="@Model.inforcaothap" />
+        <label>Chi tiết cầu thủ:</label>
+        <textarea class="form-control" name="chitietcauthu1"></textarea>
+        <label>Lương:</label>
+        <input type="text" class="form-control" name="luongctt" value="@Model.Salary"/>
+        <label>Giá Trị:</label>
+        <input type="text" class="form-control" name="giatrictt" value="@Model.Value" />
+        <label>Ảnh:</label>
+        <input type="file" class="form-control" name="anhctt" />
+        <button type="submit" class="btn-danger" onclick="clickk()">Tạo</button>
+    </form>
+</div>
+<script src="~/Content/Ckeditor/ckeditor/ckeditor.js">
+
+</script>
+<script>
+    CKEDITOR.replace('chitietcauthu1')
+</script>

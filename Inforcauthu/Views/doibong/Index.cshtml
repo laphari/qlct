@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    var totallpagesize = int.Parse(ViewData["totallpage"].ToString());
+}
+
+<h2>Index</h2>
+<div style="margin-left:800px">
+    <form action="/doibong/Search" method="post" style="display:flex">
+        <div style="margin-left:20px;margin-top:-10px">
+            <input type="search" placeholder="Tim Kiem" name="search" style="outline:none;border: 1px solid red" />
+        </div>
+        <div style="margin-left:10px;margin-top:-15px">
+            <button type="submit" class="btn btn-primary">Tìm Kiếm</button>
+        </div>
+    </form>
+</div>
+<p>
+    <button type="button" class="btn btn-success"><a href="https://localhost:44370/doibong/Viewcreate">Tạo</a></button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên CLB
+        </th>
+        <th>
+            Năm Thành Lập
+        </th>
+        <th>
+            Chủ Tịch
+        </th>
+        <th>
+            Fan
+        </th>
+        <th>
+            Logo
+        </th>
+        <th>
+            Thao Tác
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Nameclub
+            </td>
+            <td>
+                @item.Namthanhlap
+            </td>
+            <td>
+                @item.Chutichclb
+            </td>
+            <td>
+                @item.fan
+            </td>
+            <td>
+                <img src="@item.logo" width="60px" height="60px" />
+            </td>
+            <td>
+                <a href="/doibong/Remove?id=@item.IDclub" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-trash-alt"></i></a>
+                <a href="/doibong/Detail?id=@item.IDclub" class="btn btn-danger btn-sm" style="color:white"><i class="fa-solid fa-circle-info"></i></a>
+                <a href="/doibong/Viewupdate?id=@item.IDclub" class="btn btn-danger btn-sm" style="color:white"><i class="fa-solid fa-pen-to-square"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>
+<ul class="pagination" style="margin-left:35%;margin-top:20px">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    @for (var i = 1; i <= totallpagesize; i++)
+    {
+        <li class="page-item"><a class="page-link" href="/doibong/Index?page=@i">@i</a></li>
+    }
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul>
+
+@if (ViewBag.Thongdiep == true)
+{
+    <script>
+        window.addEventListener('load', (event) => {
+            Swal.fire(
+                'Bạn đã tạo thành công câu lạc bộ',
+                'bấm vào đây',
+                'success'
+            )
+        })
+    </script>
+}
